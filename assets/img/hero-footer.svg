@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg width="100%" height="100%" viewBox="0 0 2606 287" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" xmlns:serif="http://www.serif.com/" style="fill-rule:evenodd;clip-rule:evenodd;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:1.5;">
+    <g id="Artboard1" transform="matrix(1,0,0,1,5,-358)">
+        <rect x="-5" y="358" width="2606" height="287" style="fill:none;"/>
+        <clipPath id="_clip1">
+            <rect x="-5" y="358" width="2606" height="287"/>
+        </clipPath>
+        <g clip-path="url(#_clip1)">
+            <g id="Silhouette" transform="matrix(1,0,0,0.996466,0,1.282686)">
+                <path d="M0,609L248,493L347,556L496,478L562,502L636,444L663,439L705,410L840,537L919,487L957,499L996,459L1016,455L1129,363L1225,432L1247,435L1298,483L1348,470L1441,537L1489,498L1574,560L1642,523L1675,537L1751,476L1774,473L1866,391L1993,479L2034,467L2098,508L2152,466L2182,462L2269,402L2418,501L2596,582L2596,646L0,646L0,609Z" style="fill:white;stroke:white;stroke-width:10.02px;"/>
+            </g>
+        </g>
+    </g>
+</svg>

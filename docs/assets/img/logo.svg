@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg width="100%" height="100%" viewBox="0 0 970 222" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" xmlns:serif="http://www.serif.com/" style="fill-rule:evenodd;clip-rule:evenodd;stroke-linecap:round;">
+    <g transform="matrix(1,0,0,1,-28.0101,-758.01)">
+        <g id="Logotype">
+            <g id="House" transform="matrix(1,0,0,1,-270,440)">
+                <path d="M720,470L590,370L460,470L320,470L400,410L420,430L480,340L512,370L590,370L630,400.769L630,370L640,370L640,408.462" style="fill:none;stroke:black;stroke-width:10.67px;"/>
+            </g>
+            <g transform="matrix(1,0,0,1,-270,440)">
+                <rect x="320" y="500" width="40" height="40" style="fill:rgb(250,222,79);"/>
+            </g>
+            <g transform="matrix(1,0,0,1,-270,440)">
+                <rect x="380" y="500" width="40" height="40" style="fill:rgb(254,156,37);"/>
+            </g>
+            <g transform="matrix(1,0,0,1,-270,440)">
+                <rect x="440" y="500" width="40" height="40" style="fill:rgb(252,45,53);"/>
+            </g>
+            <g transform="matrix(1,0,0,1,-270,440)">
+                <rect x="500" y="500" width="40" height="40" style="fill:rgb(251,13,135);"/>
+            </g>
+            <g transform="matrix(1,0,0,1,-270,440)">
+                <rect x="560" y="500" width="40" height="40" style="fill:rgb(159,33,179);"/>
+            </g>
+            <g transform="matrix(1,0,0,1,-270,440)">
+                <rect x="620" y="500" width="40" height="40" style="fill:rgb(54,78,217);"/>
+            </g>
+            <g transform="matrix(1,0,0,1,-270,440)">
+                <rect x="680" y="500" width="40" height="40" style="fill:rgb(14,177,247);"/>
+            </g>
+            <g id="Window" transform="matrix(1,0,0,1,-270,440)">
+                <g transform="matrix(1,0,0,1,7,7)">
+                    <rect x="560" y="410" width="20" height="20"/>
+                </g>
+                <g transform="matrix(1,0,0,1,33,7)">
+                    <rect x="560" y="410" width="20" height="20"/>
+                </g>
+                <g transform="matrix(1,0,0,1,7,33)">
+                    <rect x="560" y="410" width="20" height="20"/>
+                </g>
+                <g transform="matrix(1,0,0,1,33,33)">
+                    <rect x="560" y="410" width="20" height="20"/>
+                </g>
+            </g>
+            <g transform="matrix(1,0,0,1,223.695,212.038)">
+                <g transform="matrix(86.6667,0,0,86.6667,773.737,670)">
+                </g>
+                <text x="260px" y="670px" style="font-family:'Arial-BoldMT', 'Arial', sans-serif;font-weight:700;font-size:86.667px;">PIXEL<tspan x="508.87px 532.949px " y="670px 670px "> P</tspan>EAK</text>
+            </g>
+            <g transform="matrix(1,0,0,1,244.688,222.038)">
+                <g transform="matrix(55.8799,0,0,55.8799,629.283,720)">
+                </g>
+                <text x="370px" y="720px" style="font-family:'AvenirNext-Regular', 'Avenir Next', sans-serif;font-size:55.88px;">LIGHTING</text>
+            </g>
+        </g>
+    </g>
+</svg>
