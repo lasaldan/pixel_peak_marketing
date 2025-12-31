@@ -26,12 +26,14 @@ baseurl: "/" # the subpath of your site, e.g. /blog
 url: "https://pixelpeaklighting.com" # the base hostname & protocol for your site, e.g. http://example.com
 
 # Build settings
-theme: minima
+# theme: minima
 plugins:
   - jekyll-feed
   - jekyll-seo-tag
 
 timezone: America/Denver
+
+permalink: pretty
 
 
 # Exclude from processing.
