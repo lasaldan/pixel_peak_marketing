@@ -9,7 +9,7 @@
         <div class="footer-contact pt-3">
           <p>1455 N 600 E</p>
           <p>Mapleton, UT 84664</p>
-          <p class="mt-3"><strong>Phone:</strong> <span>+1 801 555 1234</span></p>
+          <!-- <p class="mt-3"><strong>Phone:</strong> <span>+1 801 555 1234</span></p> -->
           <p><strong>Email:</strong> <span>contact@pixelpeaklighting.com</span></p>
         </div>
         <div>
@@ -27,33 +27,34 @@
         <h4>Useful Links</h4>
         <ul>
           <li><a href="{{ '/' | relative_url }}">Home</a></li>
-          <li><a href="{{ '/about' | relative_url }}">Our Lighting System</a></li>
+          <!-- <li><a href="{{ '/about' | relative_url }}">Our Lighting System</a></li>
           <li><a href="{{ '/faq' | relative_url }}">FAQ</a></li>
           <li><a href="#">Terms of Service</a></li>
-          <li><a href="#">Privacy Policy</a></li>
+          <li><a href="#">Privacy Policy</a></li> -->
         </ul>
       </div>
 
       <div class="col-lg-2 col-md-3 footer-links">
         <h4>About Us</h4>
         <ul>
-          <li><a href="#">Our Team</a></li>
+          <!-- <li><a href="#">Our Team</a></li>
           <li><a href="#">Our Story</a></li>
           <li><a href="#">Our Process</a></li>
-          <li><a href="#">Our Promise</a></li>
-          <li><a href="{{ '/contact' | relative_url }}">Contact Us</a></li>
+          <li><a href="#">Our Promise</a></li> -->
+          <li><a href="mailto:contact@pixelpeaklighting.com">Contact Us</a></li>
         </ul>
       </div>
 
       <div class="col-lg-4 col-md-12 footer-newsletter">
         <h4>Estimate</h4>
-        <p>Send us your home address for a free, low-pressure quote! Using Google Street View we can provide a preliminary estimate without the need for an in-person visit. If you are interested in an accurate estimate, we will be happy to come by and take some measurements and ask a few questions to make sure we have the same vision for your lighting system.</p>
-        <form action="forms/newsletter.php" method="post" class="php-email-form">
+        <p>Send us your home address for a free, low-pressure quote! Using Google Street View we can provide a preliminary estimate without the need for an in-person visit. If you are interested in a more accurate estimate, we will be happy to come by and take some measurements and ask a few questions to make sure we have the same vision for your lighting system.</p>
+        <a href="{{ '/' | relative_url }}#contact-form-section" class="btn btn-secondary">Request a Quote</a>
+        <!-- <form action="forms/newsletter.php" method="post" class="php-email-form">
           <div class="newsletter-form"><input type="email" name="email"><input type="submit" value="Subscribe"></div>
           <div class="loading">Loading</div>
           <div class="error-message"></div>
           <div class="sent-message">Your subscription request has been sent. Thank you!</div>
-        </form>
+        </form> -->
       </div>
 
     </div>

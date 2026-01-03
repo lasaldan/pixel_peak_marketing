@@ -61,8 +61,10 @@
 }
 
 /* Smooth scroll */
-:root {
+html {
   scroll-behavior: smooth;
+  /* Add scroll padding to account for sticky header */
+  scroll-padding-top: 100px;
 }
 
 /*--------------------------------------------------------------
@@ -838,7 +840,7 @@ section,
   color: var(--default-color);
   background-color: var(--background-color);
   padding: 60px 0;
-  scroll-margin-top: 900px;
+  scroll-margin-top: 100px;
   overflow: clip;
 }
 

@@ -13,7 +13,7 @@ key: home
     <h2 data-aos="fade-up" data-aos-delay="100">Premium, Permanent<br>Architectural Lighting</h2>
     <p data-aos="fade-up" data-aos-delay="200">Custom-designed for your home, app-controlled, <br>dustproof, waterproof, everything-proof.</p>
     <div class="d-flex mt-4" data-aos="fade-up" data-aos-delay="300">
-      <a href="{{ '/courses.html' | relative_url }}" class="btn-get-started">Get Started</a>
+      <a href="{{ '/' | relative_url }}#contact-form-section" class="btn-get-started">Get Started</a>
     </div>
   </div>
 
@@ -41,7 +41,7 @@ key: home
           <li><i class="bi bi-check-circle"></i> <span>IP68 waterproof + dustproof LED system</span></li>
           <li><i class="bi bi-check-circle"></i> <span>Custom design to match your home</span></li>
         </ul>
-        <a href="about.html" class="read-more"><span>Our Lighting System</span><i class="bi bi-arrow-right"></i></a>
+        <!-- <a href="about.html" class="read-more"><span>Our Lighting System</span><i class="bi bi-arrow-right"></i></a> -->
       </div>
 
     </div>
@@ -113,9 +113,9 @@ key: home
             <br>
 
           </p>
-          <div class="text-center">
+          <!-- <div class="text-center">
             <a href="#" class="more-btn"><span>Learn More</span> <i class="bi bi-chevron-right"></i></a>
-          </div>
+          </div> -->
         </div>
       </div><!-- End Why Box -->
 
@@ -269,24 +269,16 @@ key: home
         <form id="contact-form" class="php-email-form">
           <div class="row gy-4">
 
+            <p>Send us your home address for a free, low-pressure quote! Using Google Street View we can provide a preliminary estimate without the need for an in-person visit. If you are interested in a more accurate estimate, we will be happy to come by and take some measurements and ask a few questions to make sure we have the same vision for your lighting system.</p>
+
             <!-- Name Field -->
-            <div class="col-md-12">
+            <div class="col-md-6">
               <input type="text" id="name" name="name" class="form-control" placeholder="Your Name" required>
             </div>
 
             <!-- Email Field -->
             <div class="col-md-6">
               <input type="email" id="email" name="email" class="form-control" placeholder="Your Email">
-            </div>
-
-            <!-- Phone Field -->
-            <div class="col-md-6">
-              <input type="tel" id="phone" name="phone" class="form-control" placeholder="Your Phone">
-            </div>
-
-            <!-- Note about contact method requirement -->
-            <div class="col-md-12">
-              <small class="text-muted">Please provide at least an email or phone number so we can reach you.</small>
             </div>
 
             <!-- Address Field -->
@@ -296,13 +288,13 @@ key: home
 
             <!-- Additional Comments (Hidden by default) -->
             <div class="col-md-12" id="additional-comments-container" style="display: none;">
-              <textarea id="comments" name="comments" class="form-control" rows="4" placeholder="Additional details about your project (optional)"></textarea>
+              <textarea id="comments" name="comments" class="form-control" rows="4" placeholder="Additional details about your home that will help us give you a more accurate quote"></textarea>
             </div>
 
             <!-- Toggle Button for Additional Comments -->
             <div class="col-md-12">
               <button type="button" id="toggle-comments-btn" class="btn btn-link p-0 mb-3" style="text-decoration: none; color: var(--accent-color);">
-                <i class="bi bi-plus-circle"></i> Add additional comments
+                <i class="bi bi-plus-circle"></i> Add additional details
               </button>
             </div>
 
