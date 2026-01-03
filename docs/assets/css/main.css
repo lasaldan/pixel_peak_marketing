@@ -770,6 +770,16 @@ h6 {
 }
 
 /*--------------------------------------------------------------
+# About Page
+--------------------------------------------------------------*/
+.page-about {
+  background-image: url("../img/gallery1.jpg");
+  background-position: center top;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+/*--------------------------------------------------------------
 # Global Page Titles & Breadcrumbs
 --------------------------------------------------------------*/
 .page-title {

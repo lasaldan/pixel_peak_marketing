@@ -253,6 +253,77 @@ key: home
 
 </section><!-- /Courses Section -->
 
+<!-- Contact Form Section -->
+<section id="contact-form-section" class="contact section">
+
+  <!-- Section Title -->
+  <div class="container section-title" data-aos="fade-up">
+    <h2>Request a Quote</h2>
+    <p>Get an estimate for your home</p>
+  </div><!-- End Section Title -->
+
+  <div class="container" data-aos="fade-up" data-aos-delay="100">
+
+    <div class="row justify-content-center">
+      <div class="col-lg-8">
+        <form id="contact-form" class="php-email-form">
+          <div class="row gy-4">
+
+            <!-- Name Field -->
+            <div class="col-md-12">
+              <input type="text" id="name" name="name" class="form-control" placeholder="Your Name" required>
+            </div>
+
+            <!-- Email Field -->
+            <div class="col-md-6">
+              <input type="email" id="email" name="email" class="form-control" placeholder="Your Email">
+            </div>
+
+            <!-- Phone Field -->
+            <div class="col-md-6">
+              <input type="tel" id="phone" name="phone" class="form-control" placeholder="Your Phone">
+            </div>
+
+            <!-- Note about contact method requirement -->
+            <div class="col-md-12">
+              <small class="text-muted">Please provide at least an email or phone number so we can reach you.</small>
+            </div>
+
+            <!-- Address Field -->
+            <div class="col-md-12">
+              <input type="text" id="address" name="address" class="form-control" placeholder="Physical Address" required>
+            </div>
+
+            <!-- Additional Comments (Hidden by default) -->
+            <div class="col-md-12" id="additional-comments-container" style="display: none;">
+              <textarea id="comments" name="comments" class="form-control" rows="4" placeholder="Additional details about your project (optional)"></textarea>
+            </div>
+
+            <!-- Toggle Button for Additional Comments -->
+            <div class="col-md-12">
+              <button type="button" id="toggle-comments-btn" class="btn btn-link p-0 mb-3" style="text-decoration: none; color: var(--accent-color);">
+                <i class="bi bi-plus-circle"></i> Add additional comments
+              </button>
+            </div>
+
+            <!-- Submit Button -->
+            <div class="col-md-12 text-center">
+              <div class="loading" style="display: none;">Loading</div>
+              <div class="error-message" style="display: none;"></div>
+              <div class="sent-message" style="display: none;">Thank you! Your request has been submitted. We'll be in touch soon.</div>
+
+              <button type="submit">Request Quote</button>
+            </div>
+
+          </div>
+        </form>
+      </div>
+    </div>
+
+  </div>
+
+</section><!-- /Contact Form Section -->
+
 <!-- Trainers Index Section -->
 <section id="trainers-index" class="section trainers-index">
 
@@ -331,3 +402,141 @@ key: home
   </div>
 
 </section><!-- /Trainers Index Section -->
+
+<script>
+// Function to submit form data to the API
+async function submitForm(formData) {
+  const response = await fetch('https://central-services.danimate.net/api/v1/messages', {
+    method: 'POST',
+    headers: {
+      'Authorization': 'Bearer 042b3ae5b3d659deb2d571d46a113b1ff268999e74c8b6fe4f11a7596d654e08',
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({
+      form_data: formData
+    })
+  });
+  
+  if (response.ok) {
+    return await response.json();
+  } else {
+    throw new Error('Failed to submit form');
+  }
+}
+
+// Wait for DOM to be fully loaded
+document.addEventListener('DOMContentLoaded', function() {
+  const contactForm = document.getElementById('contact-form');
+  const toggleCommentsBtn = document.getElementById('toggle-comments-btn');
+  const additionalCommentsContainer = document.getElementById('additional-comments-container');
+  const loadingDiv = contactForm.querySelector('.loading');
+  const errorMessageDiv = contactForm.querySelector('.error-message');
+  const sentMessageDiv = contactForm.querySelector('.sent-message');
+  
+  let commentsVisible = false;
+
+  // Toggle additional comments field
+  if (toggleCommentsBtn && additionalCommentsContainer) {
+    toggleCommentsBtn.addEventListener('click', function() {
+      commentsVisible = !commentsVisible;
+      if (commentsVisible) {
+        additionalCommentsContainer.style.display = 'block';
+        toggleCommentsBtn.innerHTML = '<i class="bi bi-dash-circle"></i> Hide additional comments';
+      } else {
+        additionalCommentsContainer.style.display = 'none';
+        toggleCommentsBtn.innerHTML = '<i class="bi bi-plus-circle"></i> Add additional comments';
+      }
+    });
+  }
+
+  // Handle form submission
+  if (contactForm) {
+    contactForm.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      
+      // Hide previous messages
+      if (loadingDiv) loadingDiv.style.display = 'none';
+      if (errorMessageDiv) errorMessageDiv.style.display = 'none';
+      if (sentMessageDiv) sentMessageDiv.style.display = 'none';
+      
+      // Get form values
+      const name = document.getElementById('name').value.trim();
+      const email = document.getElementById('email').value.trim();
+      const phone = document.getElementById('phone').value.trim();
+      const address = document.getElementById('address').value.trim();
+      const comments = document.getElementById('comments').value.trim();
+      
+      // Validate that at least email or phone is provided
+      if (!email && !phone) {
+        if (errorMessageDiv) {
+          errorMessageDiv.textContent = 'Please provide either an email or phone number.';
+          errorMessageDiv.style.display = 'block';
+        }
+        return;
+      }
+      
+      // Validate required fields
+      if (!name || !address) {
+        if (errorMessageDiv) {
+          errorMessageDiv.textContent = 'Please fill in all required fields.';
+          errorMessageDiv.style.display = 'block';
+        }
+        return;
+      }
+      
+      // Build form data object
+      const formData = {
+        name: name,
+        address: address
+      };
+      
+      // Add email and/or phone if provided
+      if (email) {
+        formData.email = email;
+      }
+      if (phone) {
+        formData.phone = phone;
+      }
+      
+      // Add comments if provided
+      if (comments) {
+        formData.comments = comments;
+      }
+      
+      // Show loading state
+      if (loadingDiv) loadingDiv.style.display = 'block';
+      
+      try {
+        // Submit form
+        const result = await submitForm(formData);
+        
+        // Hide loading, show success message
+        if (loadingDiv) loadingDiv.style.display = 'none';
+        if (sentMessageDiv) {
+          sentMessageDiv.style.display = 'block';
+          sentMessageDiv.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+        }
+        
+        // Reset form
+        contactForm.reset();
+        
+        // Hide comments field if it was visible
+        if (commentsVisible) {
+          commentsVisible = false;
+          if (additionalCommentsContainer) additionalCommentsContainer.style.display = 'none';
+          if (toggleCommentsBtn) toggleCommentsBtn.innerHTML = '<i class="bi bi-plus-circle"></i> Add additional comments';
+        }
+        
+      } catch (error) {
+        // Hide loading, show error message
+        if (loadingDiv) loadingDiv.style.display = 'none';
+        if (errorMessageDiv) {
+          errorMessageDiv.textContent = 'Sorry, there was an error submitting your request. Please try again or contact us directly.';
+          errorMessageDiv.style.display = 'block';
+          errorMessageDiv.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+        }
+      }
+    });
+  }
+});
+</script>
