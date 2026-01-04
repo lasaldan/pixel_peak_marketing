@@ -454,14 +454,14 @@ document.addEventListener('DOMContentLoaded', function() {
       // Get form values
       const name = document.getElementById('name').value.trim();
       const email = document.getElementById('email').value.trim();
-      const phone = document.getElementById('phone').value.trim();
+      // const phone = document.getElementById('phone').value.trim();
       const address = document.getElementById('address').value.trim();
       const comments = document.getElementById('comments').value.trim();
       
       // Validate that at least email or phone is provided
-      if (!email && !phone) {
+      if (!email) {
         if (errorMessageDiv) {
-          errorMessageDiv.textContent = 'Please provide either an email or phone number.';
+          errorMessageDiv.textContent = 'Please provide an email address.';
           errorMessageDiv.style.display = 'block';
         }
         return;
@@ -485,9 +485,6 @@ document.addEventListener('DOMContentLoaded', function() {
       // Add email and/or phone if provided
       if (email) {
         formData.email = email;
-      }
-      if (phone) {
-        formData.phone = phone;
       }
       
       // Add comments if provided
