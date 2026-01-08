@@ -7,9 +7,12 @@
     
     <nav id="navmenu" class="navmenu">
       <ul>
-        <li><a href="{{ "/" | relative_url }}" class="{% if page.key == 'home' %}{{ 'active' }}{% endif %}" title="Home">Home<br></a></li>
-        <!-- <li><a href="{{ "/about" | relative_url }}" class="{% if page.key == 'about' %}{{ 'active' }}{% endif %}" title="Lighting">Lighting</a></li>
-        <li><a href="{{ "/faq" | relative_url }}" class="{% if page.key == 'faq' %}{{ 'active' }}{% endif %}" title="FAQ">FAQ</a></li>
+        <li><a href="{{ "/" | relative_url }}" class="{% if page.key == 'home' %}{{ 'active' }}{% endif %}" title="Home"><span class="nav-text-desktop">Home</span><span class="nav-text-mobile">Home</span><br></a></li>
+        <li><a href="{{ "/our-lighting-system" | relative_url }}" class="{% if page.key == 'our-lighting-system' %}{{ 'active' }}{% endif %}" title="Lights"><span class="nav-text-desktop">Lights</span><span class="nav-text-mobile">Our Lighting System</span><br></a></li>
+        <li><a href="{{ "/our-team" | relative_url }}" class="{% if page.key == 'our-team' %}{{ 'active' }}{% endif %}" title="Team"><span class="nav-text-desktop">Team</span><span class="nav-text-mobile">Our Team</span><br></a></li>
+        <li><a href="{{ "/our-process" | relative_url }}" class="{% if page.key == 'our-process' %}{{ 'active' }}{% endif %}" title="Process"><span class="nav-text-desktop">Process</span><span class="nav-text-mobile">Our Process</span><br></a></li>
+        <li><a href="{{ "/our-promise" | relative_url }}" class="{% if page.key == 'our-promise' %}{{ 'active' }}{% endif %}" title="Promise"><span class="nav-text-desktop">Promise</span><span class="nav-text-mobile">Our Promise</span><br></a></li>
+        <!-- <li><a href="{{ "/faq" | relative_url }}" class="{% if page.key == 'faq' %}{{ 'active' }}{% endif %}" title="FAQ">FAQ</a></li>
         <li><a href="{{ "/pricing" | relative_url }}" class="{% if page.key == 'pricing' %}{{ 'active' }}{% endif %}" title="Estimates">Estimates</a></li>
         <li><a href="{{ "/contact" | relative_url }}" class="{% if page.key == 'contact' %}{{ 'active' }}{% endif %}" title="Contact Us">Contact Us</a></li> -->
       </ul>
