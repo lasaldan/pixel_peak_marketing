@@ -772,10 +772,10 @@ h6 {
 }
 
 /*--------------------------------------------------------------
-# About Page
+# About Lighting System Page
 --------------------------------------------------------------*/
-.page-about {
-  background-image: url("../img/gallery1.jpg");
+.page-lighting-system {
+  background-image: url("../img/lighting.jpg");
   background-position: center top;
   background-repeat: no-repeat;
   background-size: cover;
@@ -832,6 +832,40 @@ h6 {
   color: color-mix(in srgb, var(--default-color), transparent 70%);
 }
 
+.page-title.breadcrumbs-blue nav {
+  background-color: var(--brand-blue);
+}
+
+.page-title.breadcrumbs-blue .heading {
+  background-color: rgba(0, 0, 0, .3);
+}
+
+.page-title.breadcrumbs-light-blue nav {
+  background-color: var(--brand-light-blue);
+  background-color: color-mix(in srgb, var(--brand-light-blue) 90%, black 5%);
+}
+
+.page-title.breadcrumbs-light-blue .heading {
+  background-color: var(--brand-light-blue);
+}
+
+.page-title.breadcrumbs-purple nav {
+  background-color: var(--brand-purple);
+  background-color: color-mix(in srgb, var(--brand-purple) 90%, black 5%);
+}
+
+.page-title.breadcrumbs-purple .heading {
+  background-color: var(--brand-purple);
+}
+
+.page-title.breadcrumbs-red nav {
+  background-color: var(--brand-red);
+  background-color: color-mix(in srgb, var(--brand-red) 90%, black 5%);
+}
+
+.page-title.breadcrumbs-red .heading {
+  background-color: var(--brand-red);
+}
 /*--------------------------------------------------------------
 # Global Sections
 --------------------------------------------------------------*/
@@ -1071,6 +1105,14 @@ section,
 /*--------------------------------------------------------------
 # Why Us Section
 --------------------------------------------------------------*/
+.why-yellow .why-box, .why-yellow .icon-box {
+  --accent-color: var(--brand-light-blue);
+}
+
+.why-red .why-box, .why-red .icon-box {
+  --accent-color: var(--brand-red);
+}
+
 .why-us .why-box {
   color: var(--contrast-color);
   background: var(--accent-color);
@@ -2240,6 +2282,7 @@ section,
 
 .contact .php-email-form input[type=text],
 .contact .php-email-form input[type=email],
+.contact .php-email-form input[type=tel],
 .contact .php-email-form textarea {
   font-size: 14px;
   padding: 10px 15px;
@@ -2252,12 +2295,14 @@ section,
 
 .contact .php-email-form input[type=text]:focus,
 .contact .php-email-form input[type=email]:focus,
+.contact .php-email-form input[type=tel]:focus,
 .contact .php-email-form textarea:focus {
   border-color: var(--accent-color);
 }
 
 .contact .php-email-form input[type=text]::placeholder,
 .contact .php-email-form input[type=email]::placeholder,
+.contact .php-email-form input[type=tel]::placeholder,
 .contact .php-email-form textarea::placeholder {
   color: color-mix(in srgb, var(--default-color), transparent 70%);
 }

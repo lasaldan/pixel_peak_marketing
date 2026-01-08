@@ -4,7 +4,9 @@
     <div class="row gy-4">
       <div class="col-lg-4 col-md-6 footer-about">
         <a href="index.html" class="logo d-flex align-items-center">
-          <span class="sitename">Pixel Peak Lighting</span>
+          <!-- <span class="sitename">Pixel Peak Lighting</span> -->
+          <img src="{{ "assets/img/logo.svg" | relative_url }}" alt="Pixel Peak Logo">
+
         </a>
         <div class="footer-contact pt-3">
           <p>1455 N 600 E</p>
@@ -27,27 +29,28 @@
         <h4>Useful Links</h4>
         <ul>
           <li><a href="{{ '/' | relative_url }}">Home</a></li>
-          <!-- <li><a href="{{ '/about' | relative_url }}">Our Lighting System</a></li>
-          <li><a href="{{ '/faq' | relative_url }}">FAQ</a></li>
-          <li><a href="#">Terms of Service</a></li>
-          <li><a href="#">Privacy Policy</a></li> -->
+          <li><a href="{{ '/our-lighting-system' | relative_url }}">Our Lighting System</a></li>
+          <!-- <li><a href="{{ '/faq' | relative_url }}">FAQ</a></li> -->
+          <li><a href="{{ '/terms-of-service' | relative_url }}">Terms of Service</a></li>
+          <li><a href="{{ '/privacy-policy' | relative_url }}">Privacy Policy</a></li>
+          <li><a href="{{ '/disclaimer' | relative_url }}">Disclaimer</a></li>
         </ul>
       </div>
 
       <div class="col-lg-2 col-md-3 footer-links">
         <h4>About Us</h4>
         <ul>
-          <!-- <li><a href="#">Our Team</a></li>
-          <li><a href="#">Our Story</a></li>
-          <li><a href="#">Our Process</a></li>
-          <li><a href="#">Our Promise</a></li> -->
+          <li><a href="{{ '/our-team' | relative_url }}">Our Team</a></li>
+          <!-- <li><a href="{{ '/our-story' | relative_url }}">Our Story</a></li> -->
+          <li><a href="{{ '/our-process' | relative_url }}">Our Process</a></li>
+          <li><a href="{{ '/our-promise' | relative_url }}">Our Promise</a></li>
           <li><a href="mailto:contact@pixelpeaklighting.com">Contact Us</a></li>
         </ul>
       </div>
 
       <div class="col-lg-4 col-md-12 footer-newsletter">
         <h4>Estimate</h4>
-        <p>Send us your home address for a free, low-pressure quote! Using Google Street View we can provide a preliminary estimate without the need for an in-person visit. If you are interested in a more accurate estimate, we will be happy to come by and take some measurements and ask a few questions to make sure we have the same vision for your lighting system.</p>
+        <p>Send us your home address for a free, low-pressure quote! Using Google Street View we can provide a preliminary estimate without the need for an in-person visit. If you are interested in a more accurate estimate, we will be happy to come by and take some measurements and ask a few questions to make sure we have the right vision for your lighting system.</p>
         <a href="{{ '/' | relative_url }}#contact-form-section" class="btn btn-secondary">Request a Quote</a>
         <!-- <form action="forms/newsletter.php" method="post" class="php-email-form">
           <div class="newsletter-form"><input type="email" name="email"><input type="submit" value="Subscribe"></div>

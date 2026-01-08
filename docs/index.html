@@ -272,18 +272,42 @@ key: home
             <p>Send us your home address for a free, low-pressure quote! Using Google Street View we can provide a preliminary estimate without the need for an in-person visit. If you are interested in a more accurate estimate, we will be happy to come by and take some measurements and ask a few questions to make sure we have the same vision for your lighting system.</p>
 
             <!-- Name Field -->
-            <div class="col-md-6">
+            <div class="col-md-12">
               <input type="text" id="name" name="name" class="form-control" placeholder="Your Name" required>
-            </div>
-
-            <!-- Email Field -->
-            <div class="col-md-6">
-              <input type="email" id="email" name="email" class="form-control" placeholder="Your Email">
             </div>
 
             <!-- Address Field -->
             <div class="col-md-12">
               <input type="text" id="address" name="address" class="form-control" placeholder="Physical Address" required>
+            </div>
+
+            <!-- Contact Method Selection -->
+            <div class="col-md-12">
+              <label class="form-label mb-2">How would you like us to send the quote?</label>
+              <div class="d-flex gap-4">
+                <div class="form-check">
+                  <input class="form-check-input" type="radio" name="contact-method" id="contact-email" value="email" checked>
+                  <label class="form-check-label" for="contact-email">
+                    Email
+                  </label>
+                </div>
+                <div class="form-check">
+                  <input class="form-check-input" type="radio" name="contact-method" id="contact-phone" value="phone">
+                  <label class="form-check-label" for="contact-phone">
+                    Phone
+                  </label>
+                </div>
+              </div>
+            </div>
+
+            <!-- Email Field (shown when email is selected) -->
+            <div class="col-md-12" id="email-field-container">
+              <input type="email" id="email" name="email" class="form-control" placeholder="Your Email" required>
+            </div>
+
+            <!-- Phone Field (hidden by default, shown when phone is selected) -->
+            <div class="col-md-12" id="phone-field-container" style="display: none;">
+              <input type="tel" id="phone" name="phone" class="form-control" placeholder="Your Phone Number">
             </div>
 
             <!-- Additional Comments (Hidden by default) -->
@@ -425,7 +449,38 @@ document.addEventListener('DOMContentLoaded', function() {
   const errorMessageDiv = contactForm.querySelector('.error-message');
   const sentMessageDiv = contactForm.querySelector('.sent-message');
   
+  // Contact method elements
+  const contactEmailRadio = document.getElementById('contact-email');
+  const contactPhoneRadio = document.getElementById('contact-phone');
+  const emailFieldContainer = document.getElementById('email-field-container');
+  const phoneFieldContainer = document.getElementById('phone-field-container');
+  const emailField = document.getElementById('email');
+  const phoneField = document.getElementById('phone');
+  
   let commentsVisible = false;
+
+  // Handle contact method radio button changes
+  if (contactEmailRadio && contactPhoneRadio) {
+    contactEmailRadio.addEventListener('change', function() {
+      if (this.checked) {
+        emailFieldContainer.style.display = 'block';
+        phoneFieldContainer.style.display = 'none';
+        emailField.required = true;
+        phoneField.required = false;
+        phoneField.value = ''; // Clear phone value when switching
+      }
+    });
+    
+    contactPhoneRadio.addEventListener('change', function() {
+      if (this.checked) {
+        emailFieldContainer.style.display = 'none';
+        phoneFieldContainer.style.display = 'block';
+        emailField.required = false;
+        phoneField.required = true;
+        emailField.value = ''; // Clear email value when switching
+      }
+    });
+  }
 
   // Toggle additional comments field
   if (toggleCommentsBtn && additionalCommentsContainer) {
@@ -433,10 +488,10 @@ document.addEventListener('DOMContentLoaded', function() {
       commentsVisible = !commentsVisible;
       if (commentsVisible) {
         additionalCommentsContainer.style.display = 'block';
-        toggleCommentsBtn.innerHTML = '<i class="bi bi-dash-circle"></i> Hide additional comments';
+        toggleCommentsBtn.innerHTML = '<i class="bi bi-dash-circle"></i> Hide additional details';
       } else {
         additionalCommentsContainer.style.display = 'none';
-        toggleCommentsBtn.innerHTML = '<i class="bi bi-plus-circle"></i> Add additional comments';
+        toggleCommentsBtn.innerHTML = '<i class="bi bi-plus-circle"></i> Add additional details';
       }
     });
   }
@@ -453,19 +508,13 @@ document.addEventListener('DOMContentLoaded', function() {
       
       // Get form values
       const name = document.getElementById('name').value.trim();
-      const email = document.getElementById('email').value.trim();
-      // const phone = document.getElementById('phone').value.trim();
       const address = document.getElementById('address').value.trim();
       const comments = document.getElementById('comments').value.trim();
       
-      // Validate that at least email or phone is provided
-      if (!email) {
-        if (errorMessageDiv) {
-          errorMessageDiv.textContent = 'Please provide an email address.';
-          errorMessageDiv.style.display = 'block';
-        }
-        return;
-      }
+      // Get selected contact method
+      const contactMethod = document.querySelector('input[name="contact-method"]:checked')?.value;
+      const email = document.getElementById('email').value.trim();
+      const phone = document.getElementById('phone').value.trim();
       
       // Validate required fields
       if (!name || !address) {
@@ -476,15 +525,37 @@ document.addEventListener('DOMContentLoaded', function() {
         return;
       }
       
+      // Validate contact method based on selection
+      if (contactMethod === 'email') {
+        if (!email) {
+          if (errorMessageDiv) {
+            errorMessageDiv.textContent = 'Please provide an email address.';
+            errorMessageDiv.style.display = 'block';
+          }
+          return;
+        }
+      } else if (contactMethod === 'phone') {
+        if (!phone) {
+          if (errorMessageDiv) {
+            errorMessageDiv.textContent = 'Please provide a phone number.';
+            errorMessageDiv.style.display = 'block';
+          }
+          return;
+        }
+      }
+      
       // Build form data object
       const formData = {
         name: name,
-        address: address
+        address: address,
+        contact_method: contactMethod
       };
       
-      // Add email and/or phone if provided
-      if (email) {
+      // Add email or phone based on selection
+      if (contactMethod === 'email' && email) {
         formData.email = email;
+      } else if (contactMethod === 'phone' && phone) {
+        formData.phone = phone;
       }
       
       // Add comments if provided
@@ -509,11 +580,28 @@ document.addEventListener('DOMContentLoaded', function() {
         // Reset form
         contactForm.reset();
         
+        // Reset contact method to email (default)
+        if (contactEmailRadio) {
+          contactEmailRadio.checked = true;
+        }
+        if (emailFieldContainer) {
+          emailFieldContainer.style.display = 'block';
+        }
+        if (phoneFieldContainer) {
+          phoneFieldContainer.style.display = 'none';
+        }
+        if (emailField) {
+          emailField.required = true;
+        }
+        if (phoneField) {
+          phoneField.required = false;
+        }
+        
         // Hide comments field if it was visible
         if (commentsVisible) {
           commentsVisible = false;
           if (additionalCommentsContainer) additionalCommentsContainer.style.display = 'none';
-          if (toggleCommentsBtn) toggleCommentsBtn.innerHTML = '<i class="bi bi-plus-circle"></i> Add additional comments';
+          if (toggleCommentsBtn) toggleCommentsBtn.innerHTML = '<i class="bi bi-plus-circle"></i> Add additional details';
         }
         
       } catch (error) {
