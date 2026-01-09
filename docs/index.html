@@ -292,9 +292,15 @@ key: home
                   </label>
                 </div>
                 <div class="form-check">
-                  <input class="form-check-input" type="radio" name="contact-method" id="contact-phone" value="phone">
-                  <label class="form-check-label" for="contact-phone">
-                    Phone
+                  <input class="form-check-input" type="radio" name="contact-method" id="contact-text" value="text">
+                  <label class="form-check-label" for="contact-text">
+                    Text
+                  </label>
+                </div>
+                <div class="form-check">
+                  <input class="form-check-input" type="radio" name="contact-method" id="contact-call" value="call">
+                  <label class="form-check-label" for="contact-call">
+                    Call
                   </label>
                 </div>
               </div>
@@ -305,9 +311,14 @@ key: home
               <input type="email" id="email" name="email" class="form-control" placeholder="Your Email" required>
             </div>
 
-            <!-- Phone Field (hidden by default, shown when phone is selected) -->
-            <div class="col-md-12" id="phone-field-container" style="display: none;">
-              <input type="tel" id="phone" name="phone" class="form-control" placeholder="Your Phone Number">
+            <!-- Text Phone Field (hidden by default, shown when text is selected) -->
+            <div class="col-md-12" id="text-field-container" style="display: none;">
+              <input type="tel" id="text-phone" name="text-phone" class="form-control" placeholder="Your Phone Number (for text messages)">
+            </div>
+
+            <!-- Call Phone Field (hidden by default, shown when call is selected) -->
+            <div class="col-md-12" id="call-field-container" style="display: none;">
+              <input type="tel" id="call-phone" name="call-phone" class="form-control" placeholder="Your Phone Number (for phone calls)">
             </div>
 
             <!-- Additional Comments (Hidden by default) -->
@@ -451,33 +462,60 @@ document.addEventListener('DOMContentLoaded', function() {
   
   // Contact method elements
   const contactEmailRadio = document.getElementById('contact-email');
-  const contactPhoneRadio = document.getElementById('contact-phone');
+  const contactTextRadio = document.getElementById('contact-text');
+  const contactCallRadio = document.getElementById('contact-call');
   const emailFieldContainer = document.getElementById('email-field-container');
-  const phoneFieldContainer = document.getElementById('phone-field-container');
+  const textFieldContainer = document.getElementById('text-field-container');
+  const callFieldContainer = document.getElementById('call-field-container');
   const emailField = document.getElementById('email');
-  const phoneField = document.getElementById('phone');
+  const textPhoneField = document.getElementById('text-phone');
+  const callPhoneField = document.getElementById('call-phone');
   
   let commentsVisible = false;
 
+  // Function to hide all contact fields and clear values
+  function hideAllContactFields() {
+    emailFieldContainer.style.display = 'none';
+    textFieldContainer.style.display = 'none';
+    callFieldContainer.style.display = 'none';
+    emailField.required = false;
+    textPhoneField.required = false;
+    callPhoneField.required = false;
+  }
+
   // Handle contact method radio button changes
-  if (contactEmailRadio && contactPhoneRadio) {
+  if (contactEmailRadio) {
     contactEmailRadio.addEventListener('change', function() {
       if (this.checked) {
+        hideAllContactFields();
         emailFieldContainer.style.display = 'block';
-        phoneFieldContainer.style.display = 'none';
         emailField.required = true;
-        phoneField.required = false;
-        phoneField.value = ''; // Clear phone value when switching
+        textPhoneField.value = ''; // Clear text phone value when switching
+        callPhoneField.value = ''; // Clear call phone value when switching
       }
     });
-    
-    contactPhoneRadio.addEventListener('change', function() {
+  }
+  
+  if (contactTextRadio) {
+    contactTextRadio.addEventListener('change', function() {
       if (this.checked) {
-        emailFieldContainer.style.display = 'none';
-        phoneFieldContainer.style.display = 'block';
-        emailField.required = false;
-        phoneField.required = true;
+        hideAllContactFields();
+        textFieldContainer.style.display = 'block';
+        textPhoneField.required = true;
         emailField.value = ''; // Clear email value when switching
+        callPhoneField.value = ''; // Clear call phone value when switching
+      }
+    });
+  }
+
+  if (contactCallRadio) {
+    contactCallRadio.addEventListener('change', function() {
+      if (this.checked) {
+        hideAllContactFields();
+        callFieldContainer.style.display = 'block';
+        callPhoneField.required = true;
+        emailField.value = ''; // Clear email value when switching
+        textPhoneField.value = ''; // Clear text phone value when switching
       }
     });
   }
@@ -514,7 +552,8 @@ document.addEventListener('DOMContentLoaded', function() {
       // Get selected contact method
       const contactMethod = document.querySelector('input[name="contact-method"]:checked')?.value;
       const email = document.getElementById('email').value.trim();
-      const phone = document.getElementById('phone').value.trim();
+      const textPhone = document.getElementById('text-phone').value.trim();
+      const callPhone = document.getElementById('call-phone').value.trim();
       
       // Validate required fields
       if (!name || !address) {
@@ -534,10 +573,18 @@ document.addEventListener('DOMContentLoaded', function() {
           }
           return;
         }
-      } else if (contactMethod === 'phone') {
-        if (!phone) {
+      } else if (contactMethod === 'text') {
+        if (!textPhone) {
           if (errorMessageDiv) {
-            errorMessageDiv.textContent = 'Please provide a phone number.';
+            errorMessageDiv.textContent = 'Please provide a phone number for text messages.';
+            errorMessageDiv.style.display = 'block';
+          }
+          return;
+        }
+      } else if (contactMethod === 'call') {
+        if (!callPhone) {
+          if (errorMessageDiv) {
+            errorMessageDiv.textContent = 'Please provide a phone number for phone calls.';
             errorMessageDiv.style.display = 'block';
           }
           return;
@@ -554,8 +601,10 @@ document.addEventListener('DOMContentLoaded', function() {
       // Add email or phone based on selection
       if (contactMethod === 'email' && email) {
         formData.email = email;
-      } else if (contactMethod === 'phone' && phone) {
-        formData.phone = phone;
+      } else if (contactMethod === 'text' && textPhone) {
+        formData.text_phone = textPhone;
+      } else if (contactMethod === 'call' && callPhone) {
+        formData.call_phone = callPhone;
       }
       
       // Add comments if provided
@@ -584,17 +633,18 @@ document.addEventListener('DOMContentLoaded', function() {
         if (contactEmailRadio) {
           contactEmailRadio.checked = true;
         }
+        if (contactTextRadio) {
+          contactTextRadio.checked = false;
+        }
+        if (contactCallRadio) {
+          contactCallRadio.checked = false;
+        }
+        hideAllContactFields();
         if (emailFieldContainer) {
           emailFieldContainer.style.display = 'block';
         }
-        if (phoneFieldContainer) {
-          phoneFieldContainer.style.display = 'none';
-        }
         if (emailField) {
           emailField.required = true;
-        }
-        if (phoneField) {
-          phoneField.required = false;
         }
         
         // Hide comments field if it was visible
