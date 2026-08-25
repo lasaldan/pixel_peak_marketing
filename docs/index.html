@@ -598,6 +598,17 @@ document.addEventListener('DOMContentLoaded', function() {
       try {
         // Submit form
         const result = await submitForm(formData);
+
+        // Track successful estimate form submission in GA4
+        if (typeof gtag === 'function') {
+          gtag('event', 'estimate_form_submit', {
+            event_category: 'lead',
+            event_label: 'home_estimate_form',
+            form_location: 'home_page',
+            contact_method: contactMethod || 'not_selected',
+            value: 1
+          });
+        }
         
         // Hide loading, show success message
         if (loadingDiv) loadingDiv.style.display = 'none';
