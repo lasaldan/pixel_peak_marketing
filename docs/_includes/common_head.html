@@ -1,8 +1,8 @@
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
   <title>{{ page.title || "Home" }} | Pixel Peak Lighting</title>
-  <meta name="description" content="">
-  <meta name="keywords" content="">
+  <meta name="description" content="{{ page.description | default: site.description | escape }}">
+  <meta name="keywords" content="{{ page.keywords | default: site.keywords | default: 'pixel peak lighting, pixel peak christmas lights, permanent exterior lighting utah' | escape }}">
 
   <link href="{{ "/assets/img/square_logo.png" | relative_url }}" rel="icon">
   <link href="{{ "/assets/img/apple-touch-icon.png" | relative_url }}" rel="apple-touch-icon">
